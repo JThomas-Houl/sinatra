@@ -1,5 +1,5 @@
 class Post
-    attr_accessor :id, :title, :body
+    attr_accessor :id, :title, :author, :synopsis
 
     def self.open_connection #allow you yo call a class function i.e.Posts.open_connection
         conn = PG.connect( dbname: "blog")
@@ -8,7 +8,7 @@ class Post
     def self.all
         conn = self.open_connection
 
-        sql = "SELECT id, title, author, synopsis FROM post ORDER BY id"
+        sql = "SELECT id, title, author, synopsis FROM post BY id"
 
         result = conn.exec(sql)
 
