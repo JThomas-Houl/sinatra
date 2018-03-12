@@ -5,3 +5,4 @@ gem "sinatra"
 gem "rack"
 gem "pg"
 gem 'bootstrap-sass'
+gem "less"

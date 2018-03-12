@@ -6,8 +6,11 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    commonjs (0.2.7)
     execjs (2.7.0)
     ffi (1.9.23)
+    less (2.6.0)
+      commonjs (~> 0.2.7)
     pg (1.0.0)
     rack (1.6.5)
     rack-protection (1.5.3)
@@ -31,6 +34,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  less
   pg
   rack
   sinatra

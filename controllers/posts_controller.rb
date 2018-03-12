@@ -17,7 +17,8 @@ class PostsController < Sinatra::Base
 
   post = Post.new
   post.title = params[:title]
-  post.body = params[:body]
+  post.body = params[:author]
+  post.synopsis = params[:synopsis]
   post.save
     
     redirect "/"
@@ -29,8 +30,8 @@ class PostsController < Sinatra::Base
 
     @post = Post.new
     @post.id = ""
-    @post.title = ""
-    @post.body = "" 
+    @post.author = ""
+    @post.synopsis = "" 
     
     erb :'/posts/new'
     
@@ -46,7 +47,8 @@ class PostsController < Sinatra::Base
  
     # update the values
     post.title = params[:title]
-    post.body = params[:body]
+    post.body = params[:author]
+    post.synopsis = params[:synopsis]
  
     # save the post
     post.save

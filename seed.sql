@@ -6,7 +6,8 @@ CREATE TABLE post (
 
 );
 
-INSERT INTO post (title , body) VALUES ('Post 1' , 'Body text 1');
-INSERT INTO post (title , body) VALUES ('Post 2' , 'Body text 2');
-INSERT INTO post (title , body) VALUES ('Post 3' , 'Body text 3');
-INSERT INTO post (title , body) VALUES ('Post 4' , 'Body text 4');
+INSERT INTO post (title , author, synopsis ) VALUES ('Fear and Loathing in Las Vegas' , 'hunter s thompson', 'A Savage Journey to the Heart of the American Dream is a novel');
+
+INSERT INTO post (title , author, synopsis ) VALUES ('A Clockwork Orange' , 'Anthony Burgess',  'It is set in a near future English society featuring a subculture of extreme youth violence. The teenage protagonist, Alex, narrates his violent exploits and his experiences with state authorities intent on reforming him.');
+
+INSERT INTO post (title , author, synopsis ) VALUES ('Nineteen Eighty-Four' , 'George Orwell', 'The novel is set in Airstrip One, formerly Great Britain, a province of the superstate Oceania, whose residents are victims of perpetual war, omnipresent government surveillance and public manipulation.');

@@ -30,7 +30,7 @@ class Post
 
         post.title = post_data['title']
 
-        post.body = post_data['body']
+        post.body = post_data['synopsis']
 
         post
 
