@@ -53,8 +53,22 @@ class PostsController < Sinatra::Base
   end
     
   put '/:id'  do
+    # get the ID and turn it in to an integer
+    id = params[:id].to_i
+   # make a single post object available in the template
+    post = $posts[id]
+
+    #update the values of the object with data filed
+    post[:title] = params[:title]
+    post[:body] = params[:body]
+
+    #save the poast back to our data store 
+    $posts[id] = post;
+    puts post
+    puts $posts
     
-    "UPDATE: #{params[:id]}"
+    #redirect to the get root
+    redirect "/"
     
   end
     
@@ -75,9 +89,13 @@ class PostsController < Sinatra::Base
 end
 
   get '/:id/edit'  do
-    
-    "EDIT: #{params[:id]}"
-    
+    # get the ID and turn it in to an integer
+    id = params[:id].to_i
+
+    # make a single post object available in the template
+    @post = $posts[id]
+
+    erb :'posts/edit'
   end
 
   get '/:id' do

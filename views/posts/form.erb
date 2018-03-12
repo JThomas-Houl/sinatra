@@ -12,6 +12,8 @@
  <div>
    <input type="submit" value="Save Post">
  </div>
+
+#if post is not empty then put the value in
  <% if(@post[:id] != "") %>
    <input type="hidden" name="_method" value="PUT">
  <% end %>
