@@ -13,8 +13,18 @@
    <input type="submit" value="Save Post">
  </div>
 
+ <div>
+   <input type="submit" value="delete">
+ </div>
+
 #if post is not empty then put the value in
  <% if(@post[:id] != "") %>
    <input type="hidden" name="_method" value="PUT">
+   <% end %>
+   
+  <% if(@post[:id] != "")%>
+    <input type="hidden" name="_method" value="delete">
  <% end %>
+
+
 </form>

@@ -74,7 +74,11 @@ class PostsController < Sinatra::Base
     
   delete '/:id'  do
     
-    "DELETE: #{params[:id]}"
+    id = params[:id].to_i
+
+    $posts.delete_at(id)
+
+    redirect "/"
     
   end
   
