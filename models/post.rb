@@ -8,7 +8,7 @@ class Post
     def self.all
         conn = self.open_connection
 
-        sql = "SELECT id, title, body FROM post ORDER BY id"
+        sql = "SELECT id, title, author, synopsis FROM post ORDER BY id"
 
         result = conn.exec(sql)
 
@@ -30,7 +30,9 @@ class Post
 
         post.title = post_data['title']
 
-        post.body = post_data['synopsis']
+        post.author = post_data['author']
+
+        post.synopsis = post_data['synopsis']
 
         post
 
@@ -60,10 +62,10 @@ class Post
    
         if(!self.id)
           # Insert a new record in to the database
-          sql = "INSERT INTO post (title , body) VALUES ( '#{self.title}', '#{self.body}')"
+          sql = "INSERT INTO post (title , author, synopsis) VALUES ( '#{self.title}', '#{self.author}',, '#{self.synopsis}')"
         else
           # Update an existing one
-          sql = "UPDATE post SET title='#{self.title}', body='#{self.body}' WHERE id = #{self.id}"
+          sql = "UPDATE post SET title='#{self.title}', '#{self.author}',, '#{self.synopsis}')' WHERE id = #{self.id}"
         end
    
         conn.exec(sql)

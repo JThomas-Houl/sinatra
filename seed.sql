@@ -2,7 +2,8 @@ CREATE TABLE post (
 
  id SERIAL PRIMARY KEY,
  title VARCHAR(255),
- body TEXT
+ author TEXT,
+ synopsis TEXT
 
 );
 
