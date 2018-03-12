@@ -14,13 +14,6 @@ class PostsController < Sinatra::Base
 
   
   post '/' do
-   
-  #   new_post = {
-  #     id: $posts.length,
-  #     title: params[:title],
-  #     body: params[:body]
-  #   }
-  #  $posts.push new_post
 
   post = Post.new
   post.title = params[:title]
@@ -33,11 +26,6 @@ class PostsController < Sinatra::Base
     
     
   get '/new'  do
-    # @post = {
-    #   id: "",
-    #   title: "",
-    #   body: ""
-    # }
 
     @post = Post.new
     @post.id = ""
@@ -73,8 +61,6 @@ class PostsController < Sinatra::Base
   # get the ID
   id = params[:id].to_i
 
-  # delete the post from the database
-  # $posts.delete_at(id)
   Post.destroy id
 
   # redirect back to the homepage
@@ -86,7 +72,7 @@ end
 
     @title = "Blog posts"
     @posts = Post.all
-   # @posts = $posts
+   
 
     erb :'posts/index'
 
