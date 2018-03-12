@@ -10,21 +10,7 @@ class PostsController < Sinatra::Base
       register Sinatra::Reloader
   end
 
-  $posts = [{
-      id: 0,
-      title: "WEGEGJEGUEGHUHU",
-      body: "This is the first post"
-  },
-  {
-      id: 1,
-      title: "durrrrr",
-      body: "This is the second post"
-  },
-  {
-      id: 2,
-      title: "Post 3",
-      body: "This is the third post"
-  }];
+ 
 
   
   post '/' do
@@ -47,45 +33,54 @@ class PostsController < Sinatra::Base
     
     
   get '/new'  do
-    @post = {
-      id: "",
-      title: "",
-      body: ""
-    }
+    # @post = {
+    #   id: "",
+    #   title: "",
+    #   body: ""
+    # }
+
+    @post = Post.new
+    @post.id = ""
+    @post.title = ""
+    @post.body = "" 
     
     erb :'/posts/new'
     
   end
     
   put '/:id'  do
-    # get the ID and turn it in to an integer
+   
+    # data is gathered in the params object
     id = params[:id].to_i
-   # make a single post object available in the template
-    post = $posts[id]
+      
+    # load the object with the id
+    post = Post.find id
+ 
+    # update the values
+    post.title = params[:title]
+    post.body = params[:body]
+ 
+    # save the post
+    post.save
+      
+    # redirect the user to a GET route. We'll go back to the INDEX.
+    redirect "/";
+    
+ end
+    
+ delete '/:id'  do
+   
+  # get the ID
+  id = params[:id].to_i
 
-    #update the values of the object with data filed
-    post[:title] = params[:title]
-    post[:body] = params[:body]
+  # delete the post from the database
+  # $posts.delete_at(id)
+  Post.destroy id
 
-    #save the poast back to our data store 
-    $posts[id] = post;
-    puts post
-    puts $posts
-    
-    #redirect to the get root
-    redirect "/"
-    
-  end
-    
-  delete '/:id'  do
-    
-    id = params[:id].to_i
-
-    $posts.delete_at(id)
-
-    redirect "/"
-    
-  end
+  # redirect back to the homepage
+  redirect "/"
+  
+end
   
   get '/' do
 
@@ -102,7 +97,7 @@ end
     id = params[:id].to_i
 
     # make a single post object available in the template
-    @post = $posts[id]
+    @post = Post.find id
 
     erb :'posts/edit'
   end
