@@ -29,10 +29,13 @@ class PostsController < Sinatra::Base
   
   post '/' do
     new_post = {
-      id: $posts.length
+      id: $posts.length,
       title: params[:title],
       body: params[:body]
     }
+
+    $posts.push new_post
+    redirect '/' 
    
   end
     
