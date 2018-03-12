@@ -12,12 +12,12 @@ class PostsController < Sinatra::Base
 
   $posts = [{
       id: 0,
-      title: "Post 1",
+      title: "WEGEGJEGUEGHUHU",
       body: "This is the first post"
   },
   {
       id: 1,
-      title: "Post 2",
+      title: "durrrrr",
       body: "This is the second post"
   },
   {
@@ -29,12 +29,17 @@ class PostsController < Sinatra::Base
   
   post '/' do
    
-    new_post = {
-      id: $posts.length,
-      title: params[:title],
-      body: params[:body]
-    }
-   $posts.push new_post
+  #   new_post = {
+  #     id: $posts.length,
+  #     title: params[:title],
+  #     body: params[:body]
+  #   }
+  #  $posts.push new_post
+
+  post = Post.new
+  post.title = params[:title]
+  post.body = params[:body]
+  post.save
     
     redirect "/"
     
@@ -85,8 +90,8 @@ class PostsController < Sinatra::Base
   get '/' do
 
     @title = "Blog posts"
-
-    @posts = $posts
+    @posts = Post.all
+   # @posts = $posts
 
     erb :'posts/index'
 
@@ -106,10 +111,8 @@ end
     
     # get the ID and turn it in to an integer
     id = params[:id].to_i
-
+    @post = Post.find id
     # make a single post object available in the template
-    @post = $posts[id]
-    
     erb :'posts/show'
     
   end
